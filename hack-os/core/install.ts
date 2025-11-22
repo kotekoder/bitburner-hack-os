@@ -7,7 +7,7 @@ const MODULES_DIR = "modules"
 const DEAMONS_DIR = "deamons"
 
 export async function main(ns: NS) {
-  let config = new HackOSConfig()
+  let config = new HackOSConfig(ns)
   let logger = getLogger(ns, "HACK-OS INSTALLER", true)
 
   let hostname = "home"
