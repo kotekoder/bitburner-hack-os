@@ -1,6 +1,5 @@
 export async function main(ns: NS) {
   let URL_BASE = "https://raw.githubusercontent.com/kotekoder/bitburner-hack-os/refs/heads/main/"
-  let TOKEN = ns.args[0]
   let files = [
     "hack-os/install.ts", 
     "hack-os/core/install.ts",
@@ -14,9 +13,9 @@ export async function main(ns: NS) {
   let promise:Promise<any>|null = null
   files.forEach(f=>{
     if (promise == null)
-      promise = ns.wget(URL_BASE+f+"?token="+TOKEN,f).then(()=>ns.tprintf(f))
+      promise = ns.wget(URL_BASE+f,f).then(()=>ns.tprintf(f))
     else
-      promise = Promise.all([promise,ns.wget(URL_BASE+f+"?token="+TOKEN,f).then(()=>ns.tprintf(f))])
+      promise = Promise.all([promise,ns.wget(URL_BASE+f,f).then(()=>ns.tprintf(f))])
   })
   await promise
   ns.tprintf("Done")
