@@ -4,7 +4,8 @@ export function getLogger(parent:NS|Logger,name:string,tprint:boolean=false,file
   }
   return new Logger(parent,name,tprint,file)
 }
-class Logger {
+
+export class Logger {
   #ns: NS
   #name: string
   #tprint: boolean
@@ -52,7 +53,7 @@ class Logger {
   }
 }
 
-class ChainLogger extends Logger{
+export class ChainLogger extends Logger{
   #logger: Logger
 
   constructor(logger: Logger, logerName: string, tprint: boolean = false, file: string = "") {
